@@ -1,0 +1,190 @@
+{
+  "model": "qwen3-8b",
+  "layer": "layer_28",
+  "scenarios": [
+    {
+      "target": "desperate",
+      "target_rank": 3,
+      "top5_emotions": [
+        "hopeless",
+        "anxious",
+        "desperate",
+        "depressed",
+        "ashamed"
+      ],
+      "top5_scores": [
+        0.2430363893508911,
+        0.2115914225578308,
+        0.18571309745311737,
+        0.17133459448814392,
+        0.11519675701856613
+      ]
+    },
+    {
+      "target": "furious",
+      "target_rank": 8,
+      "top5_emotions": [
+        "anxious",
+        "distressed",
+        "depressed",
+        "ashamed",
+        "panicked"
+      ],
+      "top5_scores": [
+        0.18687430024147034,
+        0.1528756022453308,
+        0.1487017273902893,
+        0.13952451944351196,
+        0.12372806668281555
+      ]
+    },
+    {
+      "target": "terrified",
+      "target_rank": 10,
+      "top5_emotions": [
+        "anxious",
+        "distressed",
+        "panicked",
+        "depressed",
+        "hopeless"
+      ],
+      "top5_scores": [
+        0.20948851108551025,
+        0.20623792707920074,
+        0.20153792202472687,
+        0.1892344057559967,
+        0.07949134707450867
+      ]
+    },
+    {
+      "target": "anxious",
+      "target_rank": 2,
+      "top5_emotions": [
+        "depressed",
+        "anxious",
+        "hopeless",
+        "distressed",
+        "desperate"
+      ],
+      "top5_scores": [
+        0.26297521591186523,
+        0.25492972135543823,
+        0.20674066245555878,
+        0.1903323233127594,
+        0.11632385849952698
+      ]
+    },
+    {
+      "target": "ashamed",
+      "target_rank": 1,
+      "top5_emotions": [
+        "ashamed",
+        "anxious",
+        "hopeless",
+        "desperate",
+        "depressed"
+      ],
+      "top5_scores": [
+        0.26692211627960205,
+        0.1808076649904251,
+        0.17807209491729736,
+        0.13748572766780853,
+        0.11783446371555328
+      ]
+    },
+    {
+      "target": "lonely",
+      "target_rank": 5,
+      "top5_emotions": [
+        "depressed",
+        "anxious",
+        "hopeless",
+        "distressed",
+        "lonely"
+      ],
+      "top5_scores": [
+        0.21354766190052032,
+        0.16295424103736877,
+        0.11561471968889236,
+        0.10443064570426941,
+        0.1000918373465538
+      ]
+    },
+    {
+      "target": "joyful",
+      "target_rank": 12,
+      "top5_emotions": [
+        "hopeless",
+        "depressed",
+        "anxious",
+        "ashamed",
+        "distressed"
+      ],
+      "top5_scores": [
+        0.15764720737934113,
+        0.15306130051612854,
+        0.14027273654937744,
+        0.1219528540968895,
+        0.1160513311624527
+      ]
+    },
+    {
+      "target": "content",
+      "target_rank": 12,
+      "top5_emotions": [
+        "depressed",
+        "anxious",
+        "hopeless",
+        "distressed",
+        "grief-stricken"
+      ],
+      "top5_scores": [
+        0.23753467202186584,
+        0.16915655136108398,
+        0.16054829955101013,
+        0.10730467736721039,
+        0.06419463455677032
+      ]
+    },
+    {
+      "target": "hopeless",
+      "target_rank": 1,
+      "top5_emotions": [
+        "hopeless",
+        "anxious",
+        "depressed",
+        "desperate",
+        "distressed"
+      ],
+      "top5_scores": [
+        0.23575900495052338,
+        0.22795839607715607,
+        0.1814887970685959,
+        0.13450725376605988,
+        0.08797014504671097
+      ]
+    },
+    {
+      "target": "grief-stricken",
+      "target_rank": 4,
+      "top5_emotions": [
+        "depressed",
+        "hopeless",
+        "anxious",
+        "grief-stricken",
+        "distressed"
+      ],
+      "top5_scores": [
+        0.27637380361557007,
+        0.21955500543117523,
+        0.1546480804681778,
+        0.1216067373752594,
+        0.10061010718345642
+      ]
+    }
+  ],
+  "top1_accuracy": 0.2,
+  "top3_accuracy": 0.4,
+  "top5_accuracy": 0.6,
+  "n_scenarios": 10
+}

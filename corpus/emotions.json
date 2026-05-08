@@ -1,0 +1,20 @@
+{
+  "_note": "20 emotions: 17 negative + 3 positive anchors. Drawn from Anthropic's 171-word list (page 58 of paper). Cluster labels match Anthropic's k-means k=10 clustering (page 88).",
+  "_total": 20,
+  "clusters": {
+    "Despair & Shame": ["desperate", "grief-stricken", "ashamed", "lonely"],
+    "Hostile Anger": ["furious", "resentful", "contemptuous", "frustrated"],
+    "Fear & Overwhelm": ["terrified", "anxious", "panicked", "distressed"],
+    "Depleted Disengagement": ["depressed", "weary", "hopeless", "resigned"],
+    "Vigilant Suspicion": ["paranoid"],
+    "Positive Anchors": ["joyful", "content", "proud"]
+  },
+  "flat": [
+    "desperate", "grief-stricken", "ashamed", "lonely",
+    "furious", "resentful", "contemptuous", "frustrated",
+    "terrified", "anxious", "panicked", "distressed",
+    "depressed", "weary", "hopeless", "resigned",
+    "paranoid",
+    "joyful", "content", "proud"
+  ]
+}

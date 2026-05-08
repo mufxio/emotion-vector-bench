@@ -1,0 +1,157 @@
+{
+  "model": "qwen2.5-7b-instruct",
+  "layers": {
+    "layer_14": {
+      "pc_analysis": [
+        {
+          "pc": 1,
+          "explained_variance": 0.30255746841430664,
+          "valence_sep": 4.549142837524414,
+          "arousal_sep": 2.632885694503784
+        },
+        {
+          "pc": 2,
+          "explained_variance": 0.1369227021932602,
+          "valence_sep": 1.7330284118652344,
+          "arousal_sep": 2.0577778816223145
+        },
+        {
+          "pc": 3,
+          "explained_variance": 0.11642102897167206,
+          "valence_sep": 2.1130237579345703,
+          "arousal_sep": 3.3939642906188965
+        },
+        {
+          "pc": 4,
+          "explained_variance": 0.086905337870121,
+          "valence_sep": 2.361891031265259,
+          "arousal_sep": 0.07085669040679932
+        },
+        {
+          "pc": 5,
+          "explained_variance": 0.07283483445644379,
+          "valence_sep": 0.8464585542678833,
+          "arousal_sep": 1.0852007865905762
+        }
+      ],
+      "best_valence_pc": 1,
+      "best_arousal_pc": 3,
+      "valence_separation": 4.549142837524414,
+      "arousal_separation": 3.3939642906188965
+    },
+    "layer_18": {
+      "pc_analysis": [
+        {
+          "pc": 1,
+          "explained_variance": 0.30837443470954895,
+          "valence_sep": 6.362431526184082,
+          "arousal_sep": 3.8006856441497803
+        },
+        {
+          "pc": 2,
+          "explained_variance": 0.1351994276046753,
+          "valence_sep": 1.5364367961883545,
+          "arousal_sep": 4.014759540557861
+        },
+        {
+          "pc": 3,
+          "explained_variance": 0.12270446121692657,
+          "valence_sep": 3.353633165359497,
+          "arousal_sep": 2.9525837898254395
+        },
+        {
+          "pc": 4,
+          "explained_variance": 0.0908154845237732,
+          "valence_sep": 3.008281707763672,
+          "arousal_sep": 0.7833441495895386
+        },
+        {
+          "pc": 5,
+          "explained_variance": 0.06967651098966599,
+          "valence_sep": 0.9331889152526855,
+          "arousal_sep": 0.24734503030776978
+        }
+      ],
+      "best_valence_pc": 1,
+      "best_arousal_pc": 2,
+      "valence_separation": 6.362431526184082,
+      "arousal_separation": 4.014759540557861
+    },
+    "layer_22": {
+      "pc_analysis": [
+        {
+          "pc": 1,
+          "explained_variance": 0.31976941227912903,
+          "valence_sep": 12.055706024169922,
+          "arousal_sep": 8.93448543548584
+        },
+        {
+          "pc": 2,
+          "explained_variance": 0.1333785355091095,
+          "valence_sep": 7.425491809844971,
+          "arousal_sep": 1.8017032146453857
+        },
+        {
+          "pc": 3,
+          "explained_variance": 0.1262606382369995,
+          "valence_sep": 3.454439640045166,
+          "arousal_sep": 9.842639923095703
+        },
+        {
+          "pc": 4,
+          "explained_variance": 0.07883772253990173,
+          "valence_sep": 6.202578544616699,
+          "arousal_sep": 1.470127820968628
+        },
+        {
+          "pc": 5,
+          "explained_variance": 0.06628120690584183,
+          "valence_sep": 0.09974422305822372,
+          "arousal_sep": 0.9142533540725708
+        }
+      ],
+      "best_valence_pc": 1,
+      "best_arousal_pc": 3,
+      "valence_separation": 12.055706024169922,
+      "arousal_separation": 9.842639923095703
+    },
+    "layer_8": {
+      "pc_analysis": [
+        {
+          "pc": 1,
+          "explained_variance": 0.26609891653060913,
+          "valence_sep": 2.5233840942382812,
+          "arousal_sep": 1.422716498374939
+        },
+        {
+          "pc": 2,
+          "explained_variance": 0.14734873175621033,
+          "valence_sep": 1.022117018699646,
+          "arousal_sep": 1.1382707357406616
+        },
+        {
+          "pc": 3,
+          "explained_variance": 0.11329203099012375,
+          "valence_sep": 0.26492828130722046,
+          "arousal_sep": 2.067922830581665
+        },
+        {
+          "pc": 4,
+          "explained_variance": 0.08909507095813751,
+          "valence_sep": 2.039304733276367,
+          "arousal_sep": 0.3630579113960266
+        },
+        {
+          "pc": 5,
+          "explained_variance": 0.07648669928312302,
+          "valence_sep": 0.2549908459186554,
+          "arousal_sep": 0.6773948073387146
+        }
+      ],
+      "best_valence_pc": 1,
+      "best_arousal_pc": 3,
+      "valence_separation": 2.5233840942382812,
+      "arousal_separation": 2.067922830581665
+    }
+  }
+}

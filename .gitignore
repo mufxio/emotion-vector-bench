@@ -1,0 +1,22 @@
+# Large regenerable artifacts (not committed; run extract.py to regenerate)
+results/*/activations.npz
+results/*/neutral_activations.npz
+results/*/extraction_checkpoint.npz
+results/*/extraction_checkpoint_tmp.npz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp

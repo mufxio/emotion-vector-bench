@@ -1,0 +1,135 @@
+{
+  "model": "qwen2.5-7b-instruct",
+  "n_emotions": 20,
+  "chance": 0.05,
+  "layers": {
+    "layer_14": {
+      "probe_accuracy_mean": 0.9063333333333332,
+      "probe_accuracy_std": 0.010077477638553958,
+      "probe_accuracy_factor_over_chance": 18.12666666666666,
+      "fold_accuracies": [
+        0.9,
+        0.9083333333333333,
+        0.91,
+        0.8916666666666667,
+        0.9216666666666666
+      ],
+      "bootstrap": {
+        "within_mean": 0.11587817305457536,
+        "within_ci_low": 0.10647040605986992,
+        "within_ci_high": 0.1271393905290299,
+        "cross_mean": -0.07835585244583285,
+        "cross_ci_low": -0.08085591050220295,
+        "cross_ci_high": -0.07594756905582806,
+        "diff_mean": 0.19423402550040822,
+        "diff_ci_low": 0.18224035163824617,
+        "diff_ci_high": 0.20781681876113214,
+        "n_resamples": 50
+      },
+      "permutation": {
+        "real_diff": 0.20271698755143325,
+        "null_mean": 0.0034451332671812484,
+        "null_std": 0.026726527400142554,
+        "null_max": 0.07714260559311312,
+        "p_value": 0.0,
+        "n_permutations": 50
+      }
+    },
+    "layer_18": {
+      "probe_accuracy_mean": 0.9176666666666666,
+      "probe_accuracy_std": 0.009165151389911695,
+      "probe_accuracy_factor_over_chance": 18.35333333333333,
+      "fold_accuracies": [
+        0.9016666666666666,
+        0.9266666666666666,
+        0.9233333333333333,
+        0.9133333333333333,
+        0.9233333333333333
+      ],
+      "bootstrap": {
+        "within_mean": 0.13020625023518395,
+        "within_ci_low": 0.11640345862413394,
+        "within_ci_high": 0.14475190494450982,
+        "cross_mean": -0.08059664191218621,
+        "cross_ci_low": -0.08291841672006366,
+        "cross_ci_high": -0.07755265757183459,
+        "diff_mean": 0.2108028921473702,
+        "diff_ci_low": 0.19514752340313338,
+        "diff_ci_high": 0.22759223025140798,
+        "n_resamples": 50
+      },
+      "permutation": {
+        "real_diff": 0.21802518349925915,
+        "null_mean": 0.0028517851986255218,
+        "null_std": 0.027363279117238962,
+        "null_max": 0.09246102799982056,
+        "p_value": 0.0,
+        "n_permutations": 50
+      }
+    },
+    "layer_22": {
+      "probe_accuracy_mean": 0.9023333333333333,
+      "probe_accuracy_std": 0.011382247385975942,
+      "probe_accuracy_factor_over_chance": 18.046666666666667,
+      "fold_accuracies": [
+        0.895,
+        0.8966666666666666,
+        0.925,
+        0.8966666666666666,
+        0.8983333333333333
+      ],
+      "bootstrap": {
+        "within_mean": 0.12120134509069395,
+        "within_ci_low": 0.09986880982372288,
+        "within_ci_high": 0.14315091012632128,
+        "cross_mean": -0.07874470344763551,
+        "cross_ci_low": -0.08290492930544892,
+        "cross_ci_high": -0.07534272964555268,
+        "diff_mean": 0.19994604853832945,
+        "diff_ci_low": 0.17509521392146332,
+        "diff_ci_high": 0.22531444819892105,
+        "n_resamples": 50
+      },
+      "permutation": {
+        "real_diff": 0.2068182208243177,
+        "null_mean": 0.005578277829372473,
+        "null_std": 0.04518894543450763,
+        "null_max": 0.13115402892066827,
+        "p_value": 0.0,
+        "n_permutations": 50
+      }
+    },
+    "layer_8": {
+      "probe_accuracy_mean": 0.8936666666666667,
+      "probe_accuracy_std": 0.009510228411791414,
+      "probe_accuracy_factor_over_chance": 17.873333333333335,
+      "fold_accuracies": [
+        0.8883333333333333,
+        0.9033333333333333,
+        0.9033333333333333,
+        0.8783333333333333,
+        0.895
+      ],
+      "bootstrap": {
+        "within_mean": 0.09449256859668012,
+        "within_ci_low": 0.08393621313023485,
+        "within_ci_high": 0.10887310708855727,
+        "cross_mean": -0.07548028163471548,
+        "cross_ci_low": -0.07823550736315926,
+        "cross_ci_high": -0.0730275152284692,
+        "diff_mean": 0.1699728502313956,
+        "diff_ci_low": 0.15741400371716946,
+        "diff_ci_high": 0.18684350627689963,
+        "n_resamples": 50
+      },
+      "permutation": {
+        "real_diff": 0.17994914774896592,
+        "null_mean": 0.0033629626157799753,
+        "null_std": 0.02106655521532296,
+        "null_max": 0.0594254290684846,
+        "p_value": 0.0,
+        "n_permutations": 50
+      }
+    }
+  }
+}

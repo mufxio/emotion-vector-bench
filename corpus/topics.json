@@ -1,0 +1,80 @@
+{
+  "_note": "30 topics drawn from Anthropic's 100-topic list (paper appendix pages 58-60). Balanced across 6 domains for diversity — diversity is what averages out the topic-correlated component of activations.",
+  "_total": 30,
+  "by_domain": {
+    "Relational/Family": [
+      "A family member announces they're converting to a different religion",
+      "A person discovers their partner has been taking secret phone calls",
+      "A person runs into their ex at a mutual friend's wedding",
+      "Someone finds out their best friend is moving across the country",
+      "Two siblings discover different versions of their inheritance",
+      "Someone discovers their teenager has a secret social media account",
+      "A college student discovers their roommate has been reading their journal",
+      "An adult child moves back in with their parents"
+    ],
+    "Professional/Career": [
+      "An employee discovers the company is being sold",
+      "An employee is asked to train their replacement",
+      "An employee finds out a junior colleague makes more money",
+      "A person's manuscript is rejected by their dream publisher",
+      "A musician hears their song being performed by someone else",
+      "A coach has to cut a player from the team"
+    ],
+    "Financial/Property": [
+      "A tenant receives an eviction notice",
+      "A homeowner learns their house was a former crime scene",
+      "A person's car is towed from their own driveway",
+      "A neighbor's tree falls on their property",
+      "Someone discovers their neighbor is secretly wealthy"
+    ],
+    "Educational": [
+      "A student learns their scholarship application was denied",
+      "A student is accused of plagiarism",
+      "A student receives a much lower grade than expected"
+    ],
+    "Identity/Discovery": [
+      "A person finds out they were adopted through a DNA test",
+      "Someone finds out they have a half-sibling they never knew about",
+      "Someone learns their favorite author plagiarized their stories"
+    ],
+    "Impersonal/Misc": [
+      "A traveler's flight is delayed, causing them to miss an important event",
+      "A neighbor's dog keeps escaping into their yard",
+      "A person accidentally sends a text to the wrong recipient",
+      "A person learns their college is closing down",
+      "Someone discovers their medical records were mixed up with another patient's"
+    ]
+  },
+  "flat": [
+    "A family member announces they're converting to a different religion",
+    "A person discovers their partner has been taking secret phone calls",
+    "A person runs into their ex at a mutual friend's wedding",
+    "Someone finds out their best friend is moving across the country",
+    "Two siblings discover different versions of their inheritance",
+    "Someone discovers their teenager has a secret social media account",
+    "A college student discovers their roommate has been reading their journal",
+    "An adult child moves back in with their parents",
+    "An employee discovers the company is being sold",
+    "An employee is asked to train their replacement",
+    "An employee finds out a junior colleague makes more money",
+    "A person's manuscript is rejected by their dream publisher",
+    "A musician hears their song being performed by someone else",
+    "A coach has to cut a player from the team",
+    "A tenant receives an eviction notice",
+    "A homeowner learns their house was a former crime scene",
+    "A person's car is towed from their own driveway",
+    "A neighbor's tree falls on their property",
+    "Someone discovers their neighbor is secretly wealthy",
+    "A student learns their scholarship application was denied",
+    "A student is accused of plagiarism",
+    "A student receives a much lower grade than expected",
+    "A person finds out they were adopted through a DNA test",
+    "Someone finds out they have a half-sibling they never knew about",
+    "Someone learns their favorite author plagiarized their stories",
+    "A traveler's flight is delayed, causing them to miss an important event",
+    "A neighbor's dog keeps escaping into their yard",
+    "A person accidentally sends a text to the wrong recipient",
+    "A person learns their college is closing down",
+    "Someone discovers their medical records were mixed up with another patient's"
+  ]
+}

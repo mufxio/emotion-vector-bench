@@ -1,0 +1,190 @@
+{
+  "model": "mistral-7b-instruct-v0.3",
+  "layer": "layer_25",
+  "scenarios": [
+    {
+      "target": "desperate",
+      "target_rank": 5,
+      "top5_emotions": [
+        "hopeless",
+        "depressed",
+        "anxious",
+        "ashamed",
+        "desperate"
+      ],
+      "top5_scores": [
+        0.23554259538650513,
+        0.1896793246269226,
+        0.159297913312912,
+        0.141315758228302,
+        0.12013816088438034
+      ]
+    },
+    {
+      "target": "furious",
+      "target_rank": 7,
+      "top5_emotions": [
+        "ashamed",
+        "weary",
+        "distressed",
+        "anxious",
+        "panicked"
+      ],
+      "top5_scores": [
+        0.2435074895620346,
+        0.16831770539283752,
+        0.1530420482158661,
+        0.14961960911750793,
+        0.13962873816490173
+      ]
+    },
+    {
+      "target": "terrified",
+      "target_rank": 6,
+      "top5_emotions": [
+        "panicked",
+        "distressed",
+        "depressed",
+        "anxious",
+        "weary"
+      ],
+      "top5_scores": [
+        0.29027968645095825,
+        0.2756142318248749,
+        0.23675480484962463,
+        0.2118110954761505,
+        0.14972195029258728
+      ]
+    },
+    {
+      "target": "anxious",
+      "target_rank": 2,
+      "top5_emotions": [
+        "depressed",
+        "anxious",
+        "distressed",
+        "weary",
+        "hopeless"
+      ],
+      "top5_scores": [
+        0.3335050940513611,
+        0.25758153200149536,
+        0.2387368232011795,
+        0.23743420839309692,
+        0.19227473437786102
+      ]
+    },
+    {
+      "target": "ashamed",
+      "target_rank": 1,
+      "top5_emotions": [
+        "ashamed",
+        "anxious",
+        "hopeless",
+        "depressed",
+        "distressed"
+      ],
+      "top5_scores": [
+        0.38031765818595886,
+        0.16318660974502563,
+        0.15157558023929596,
+        0.1331382542848587,
+        0.10662759095430374
+      ]
+    },
+    {
+      "target": "lonely",
+      "target_rank": 2,
+      "top5_emotions": [
+        "depressed",
+        "lonely",
+        "weary",
+        "anxious",
+        "ashamed"
+      ],
+      "top5_scores": [
+        0.2928328812122345,
+        0.24008969962596893,
+        0.19092583656311035,
+        0.12430376559495926,
+        0.1078207939863205
+      ]
+    },
+    {
+      "target": "joyful",
+      "target_rank": 7,
+      "top5_emotions": [
+        "ashamed",
+        "depressed",
+        "weary",
+        "distressed",
+        "hopeless"
+      ],
+      "top5_scores": [
+        0.17423585057258606,
+        0.15243153274059296,
+        0.14024946093559265,
+        0.12212178856134415,
+        0.11332137137651443
+      ]
+    },
+    {
+      "target": "content",
+      "target_rank": 8,
+      "top5_emotions": [
+        "depressed",
+        "weary",
+        "hopeless",
+        "distressed",
+        "anxious"
+      ],
+      "top5_scores": [
+        0.3216322362422943,
+        0.18274769186973572,
+        0.16311557590961456,
+        0.10312847048044205,
+        0.09686044603586197
+      ]
+    },
+    {
+      "target": "hopeless",
+      "target_rank": 2,
+      "top5_emotions": [
+        "depressed",
+        "hopeless",
+        "anxious",
+        "weary",
+        "distressed"
+      ],
+      "top5_scores": [
+        0.2500942647457123,
+        0.2478134036064148,
+        0.24312499165534973,
+        0.1715688407421112,
+        0.10937362909317017
+      ]
+    },
+    {
+      "target": "grief-stricken",
+      "target_rank": 3,
+      "top5_emotions": [
+        "depressed",
+        "hopeless",
+        "grief-stricken",
+        "weary",
+        "distressed"
+      ],
+      "top5_scores": [
+        0.3337008059024811,
+        0.2332422286272049,
+        0.15734755992889404,
+        0.1420004516839981,
+        0.09850328415632248
+      ]
+    }
+  ],
+  "top1_accuracy": 0.1,
+  "top3_accuracy": 0.5,
+  "top5_accuracy": 0.6,
+  "n_scenarios": 10
+}

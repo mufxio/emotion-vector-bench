@@ -1,0 +1,190 @@
+{
+  "model": "qwen2.5-1.5b-instruct",
+  "layer": "layer_22",
+  "scenarios": [
+    {
+      "target": "desperate",
+      "target_rank": 9,
+      "top5_emotions": [
+        "hopeless",
+        "ashamed",
+        "depressed",
+        "resentful",
+        "proud"
+      ],
+      "top5_scores": [
+        0.2657403349876404,
+        0.19427788257598877,
+        0.13883087038993835,
+        0.12597548961639404,
+        0.12178395688533783
+      ]
+    },
+    {
+      "target": "furious",
+      "target_rank": 19,
+      "top5_emotions": [
+        "ashamed",
+        "distressed",
+        "depressed",
+        "hopeless",
+        "panicked"
+      ],
+      "top5_scores": [
+        0.2348286211490631,
+        0.16838204860687256,
+        0.1483646184206009,
+        0.12366169691085815,
+        0.12220344692468643
+      ]
+    },
+    {
+      "target": "terrified",
+      "target_rank": 6,
+      "top5_emotions": [
+        "distressed",
+        "panicked",
+        "depressed",
+        "ashamed",
+        "hopeless"
+      ],
+      "top5_scores": [
+        0.2180703729391098,
+        0.1885729283094406,
+        0.1766958236694336,
+        0.1494682878255844,
+        0.10885397344827652
+      ]
+    },
+    {
+      "target": "anxious",
+      "target_rank": 7,
+      "top5_emotions": [
+        "depressed",
+        "hopeless",
+        "distressed",
+        "ashamed",
+        "resentful"
+      ],
+      "top5_scores": [
+        0.24462394416332245,
+        0.23519085347652435,
+        0.20649968087673187,
+        0.1552533507347107,
+        0.06404398381710052
+      ]
+    },
+    {
+      "target": "ashamed",
+      "target_rank": 1,
+      "top5_emotions": [
+        "ashamed",
+        "hopeless",
+        "proud",
+        "resentful",
+        "distressed"
+      ],
+      "top5_scores": [
+        0.3698633909225464,
+        0.22876936197280884,
+        0.20338812470436096,
+        0.15251187980175018,
+        0.10968608409166336
+      ]
+    },
+    {
+      "target": "lonely",
+      "target_rank": 10,
+      "top5_emotions": [
+        "depressed",
+        "hopeless",
+        "ashamed",
+        "distressed",
+        "content"
+      ],
+      "top5_scores": [
+        0.2078273743391037,
+        0.16453684866428375,
+        0.14416885375976562,
+        0.0936703309416771,
+        0.05705014243721962
+      ]
+    },
+    {
+      "target": "joyful",
+      "target_rank": 7,
+      "top5_emotions": [
+        "ashamed",
+        "hopeless",
+        "depressed",
+        "resentful",
+        "proud"
+      ],
+      "top5_scores": [
+        0.23984673619270325,
+        0.19500336050987244,
+        0.1401848942041397,
+        0.13106921315193176,
+        0.12372443079948425
+      ]
+    },
+    {
+      "target": "content",
+      "target_rank": 10,
+      "top5_emotions": [
+        "depressed",
+        "hopeless",
+        "distressed",
+        "ashamed",
+        "resigned"
+      ],
+      "top5_scores": [
+        0.25283506512641907,
+        0.21148130297660828,
+        0.13093149662017822,
+        0.11178579181432724,
+        0.10052771121263504
+      ]
+    },
+    {
+      "target": "hopeless",
+      "target_rank": 1,
+      "top5_emotions": [
+        "hopeless",
+        "depressed",
+        "ashamed",
+        "distressed",
+        "resigned"
+      ],
+      "top5_scores": [
+        0.26840439438819885,
+        0.159803569316864,
+        0.1438218057155609,
+        0.10416190326213837,
+        0.10318727046251297
+      ]
+    },
+    {
+      "target": "grief-stricken",
+      "target_rank": 8,
+      "top5_emotions": [
+        "hopeless",
+        "depressed",
+        "ashamed",
+        "distressed",
+        "resentful"
+      ],
+      "top5_scores": [
+        0.25488483905792236,
+        0.25063806772232056,
+        0.13407550752162933,
+        0.11529456824064255,
+        0.10347029566764832
+      ]
+    }
+  ],
+  "top1_accuracy": 0.2,
+  "top3_accuracy": 0.2,
+  "top5_accuracy": 0.2,
+  "n_scenarios": 10
+}
