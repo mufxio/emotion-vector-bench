@@ -1,20 +1,52 @@
 # Cross-Model Findings — Emotion Vector Geometry on Open-Weight LLMs
 
-*Written 2026-05-06. Companion document to the [emotion-vector-bench repo](../README.md).*
+*Written 2026-05-06. Corrected 2026-08-17. Companion document to the [emotion-vector-bench repo](../README.md).*
 
-We ran the same 6-stage pipeline (extraction → vectors → validation → probes → arousal → implicit-emotion) on five open-weight language models from three different labs. All five pass the basic Anthropic-style geometry tests. They also reveal something we didn't expect: **two genuinely different ways to encode emotion**, both valid, neither dominant.
+> ## ⚠ CORRECTION 2026-08-17 — findings 2 and 4 are withdrawn
+>
+> **The "18× spread in valence-axis strength" reported below is a units artifact, not a finding.**
+>
+> `check_pca` ran PCA on the raw mean-difference vectors and reported PC1 separation in
+> those raw units. Activation magnitude varies by an order of magnitude across model
+> families, so the number measured vector scale, not geometry. Across the five models in
+> `results/`, raw separation correlates with mean vector L2 norm at **r = 0.9896**
+> (R² = 0.979). Qwen3-8B's mean L2 norm is 17.4; Mistral's is 1.1. That is the whole effect.
+>
+> Unit-normalizing the vectors before PCA — comparing directions rather than magnitudes —
+> collapses the spread from **17.6× to 1.13×** (0.636 to 0.716), with scale-free effect
+> sizes of 1.13 to 1.36 PC1 standard deviations. All five models pass.
+>
+> **Withdrawn:** finding 2 ("valence axis strength varies dramatically") and finding 4
+> ("two geometric profiles"). Finding 4 rested on finding 2 plus a cohesion difference of
+> 0.215 vs 0.252 — a 1.18× gap that cannot support a claim of two distinct encoding schemes.
+>
+> **Unaffected:** all probe accuracies, permutation tests, cross-layer stability, and the
+> arousal and implicit-emotion results. Those are computed independently of PCA scale.
+>
+> **The corrected headline is a stronger claim than the withdrawn one:** emotion geometry is
+> close to model-invariant across three labs and a 5× parameter range. Fix is in
+> `code/validate.py`; the raw value is retained as `valence_separation_pc1_raw` and must not
+> be compared across models.
+
+We ran the same 6-stage pipeline (extraction → vectors → validation → probes → arousal → implicit-emotion) on five open-weight language models from three different labs. All five pass the basic Anthropic-style geometry tests, at accuracies that differ by less than five percentage points across the whole set.
 
 This document is the synthesis. The per-model details are in `results/{model_slug}/REPORT.md`.
 
 ## TL;DR
 
-| Model | Probe acc | PC1 valence sep | Implicit top-3 | Geometric profile |
+| Model | Probe acc (best layer) | PC1 valence sep (normalized) | effect size | Implicit top-3 |
 |---|---|---|---|---|
-| Qwen2.5-1.5B | 89.7% | 7.30 | 20% | Compressed valence |
-| Qwen2.5-7B | 91.8% | 12.06 | 60% | Strong valence |
-| **Qwen3-8B** | 91.0% | **29.19** | 40% | Dominant valence axis |
-| Llama-3.1-8B | **92.1%** | 2.71 | **60%** | Distributed clusters |
-| Mistral-7B-v0.3 | 91.6% | 1.57 | 50% | Distributed clusters |
+| Qwen2.5-1.5B | 89.7% | 0.636 | 1.13 | 20% |
+| Qwen2.5-7B | 91.8% | 0.694 | 1.22 | 60% |
+| Qwen3-8B | 91.0% | 0.671 | 1.24 | 40% |
+| Llama-3.1-8B | **92.1%** | **0.716** | **1.36** | **60%** |
+| Mistral-7B-v0.3 | 91.6% | 0.693 | 1.30 | 50% |
+
+Full spread across three labs and a 5× parameter range: **2.4 points of probe accuracy, 1.13× of valence separation.**
+
+*Convention note (added 2026-08-17): probe accuracies in this table are the **best probed layer** per model. Averaged across all four probed layers they are 91.5 / 91.3 / 86.9 / 90.5 / 90.2% (same ordering as the table) — a 4.6-point spread. Both conventions are reported in `results/{model}/probe_results.json`; any comparison should state which it uses.*
+
+*(The withdrawn raw PC1 figures were 7.30 / 12.06 / 29.19 / 2.71 / 1.57. They are preserved in `results/_comparison.json` as `pc1_sep` and are not cross-model comparable.)*
 
 Permutation tests: p < 0.001 across every model, every layer.
 Cross-layer stability: 0.96-0.99 across all five.
@@ -58,19 +90,32 @@ Permutation tests confirmed the cluster signal is real: real within-cross diff (
 
 This is the strongest evidence that emotion-vector geometry isn't a quirk of large frontier models — every model in this scale class has emotion linearly accessible at high accuracy.
 
-### 2. Valence axis strength varies dramatically
+### 2. ~~Valence axis strength varies dramatically~~ — WITHDRAWN 2026-08-17
 
-PC1 valence separation (positive emotions minus negative emotions on PC1):
+**This finding does not exist.** The chart below plots raw PC1 separation, which is
+denominated in each model's own activation units. It is a magnitude chart wearing a
+geometry chart's label. See the correction at the top of this document.
+
+Unit-normalized, the same five models separate valence at 0.636 / 0.694 / 0.671 / 0.716 /
+0.693 — a 1.13× spread. **The corrected finding is that valence-axis strength is close to
+constant across families.**
+
+The withdrawn chart, preserved so the error is legible rather than deleted:
 
 ```
-Qwen3-8B:        ████████████████████████████████ 29.19
-Qwen2.5-7B:      █████████████ 12.06
-Qwen2.5-1.5B:    ████████ 7.30
-Llama-3.1-8B:    ███ 2.71
-Mistral-7B-v0.3: █▌ 1.57
+[WITHDRAWN — raw activation units, not comparable across models]
+Qwen3-8B:        ████████████████████████████████ 29.19   (mean L2 norm 17.4)
+Qwen2.5-7B:      █████████████ 12.06                      (mean L2 norm  9.2)
+Qwen2.5-1.5B:    ████████ 7.30                            (mean L2 norm  6.1)
+Llama-3.1-8B:    ███ 2.71                                 (mean L2 norm  1.9)
+Mistral-7B-v0.3: █▌ 1.57                                  (mean L2 norm  1.1)
 ```
 
-The 18× spread is the most striking cross-model finding. Within the Qwen family there's a clear scale ladder (1.5B → 7B → 8B = 7.3 → 12.1 → 29.2). Across families the difference is starker still: Qwen3-8B has 18× cleaner valence separation than Mistral-7B at the same parameter scale.
+~~The 18× spread is the most striking cross-model finding. Within the Qwen family there's a clear scale ladder (1.5B → 7B → 8B = 7.3 → 12.1 → 29.2). Across families the difference is starker still.~~
+
+**Withdrawn.** Note what the annotated norms above make obvious in hindsight: the "scale ladder" 7.3 → 12.1 → 29.2 tracks the mean L2 norms 6.1 → 9.2 → 17.4 almost exactly. It was never a ladder of valence organization. It was a ladder of activation magnitude, and the ordering of the five models by raw separation is identical to their ordering by norm.
+
+Normalized, the same five models sit at 0.636 / 0.694 / 0.671 / 0.716 / 0.693 — no ladder, no family split, and the largest model is not the leader.
 
 ### 3. Within-cluster cohesion goes the OTHER way
 
@@ -86,18 +131,30 @@ Within-cluster minus cross-cluster cosine difference (higher = tighter clusters)
 
 Llama and Mistral have **tighter** within-cluster cohesion than the Qwen family. So the same models that have flat valence axes have sharper individual clusters.
 
-### 4. Two geometric profiles
+### 4. ~~Two geometric profiles~~ — WITHDRAWN 2026-08-17
 
-Putting findings 2 and 3 together, we see two distinct ways the same task gets solved:
+**This finding does not survive the correction.** It was built by combining finding 2
+(now withdrawn as a units artifact) with finding 3. Remove finding 2 and what remains is a
+cohesion difference of 0.215–0.233 against 0.247–0.252 — a **1.18× gap** that cannot carry
+a claim about two distinct ways of encoding emotion.
 
-**Profile A — Dominant valence axis (Qwen family):**
-- Strong PC1 separating positive from negative
-- Looser within-cluster cohesion (~0.215-0.233)
-- Like organizing a library by genre first (fiction/non-fiction), then topic
+The cohesion difference is real and small: Llama and Mistral do have slightly tighter
+within-cluster cohesion than the Qwen family. At n=50 per model the confidence intervals
+overlap for four of the five. It is worth one sentence, not a taxonomy.
 
-**Profile B — Distributed clusters (Llama, Mistral):**
-- Weak PC1 valence separation (1.57-2.71)
-- Tighter within-cluster cohesion (~0.247-0.252)
+**What replaces it:** across three labs and a 5× parameter range, every measured geometric
+property lands in a narrow band — probe accuracy 89.7–92.1%, normalized valence separation
+0.636–0.716, cohesion difference 0.215–0.252, cross-layer stability 0.96–0.99. The
+differences between model families are smaller than the differences between layers within
+a single model.
+
+The withdrawn framing, preserved for the record:
+
+> **Profile A — Dominant valence axis (Qwen family):** strong PC1 separating positive from
+> negative; looser within-cluster cohesion (~0.215-0.233).
+>
+> **Profile B — Distributed clusters (Llama, Mistral):** weak PC1 valence separation
+> (1.57-2.71); tighter within-cluster cohesion (~0.247-0.252).
 - Like organizing a library by topic, with no top-level genre split
 
 Both produce 91-92% probe accuracy. Both pass cross-layer stability. Both recover the arousal axis somewhere in PC2 or PC3. The 20 emotions are distinguishable in both. They just live in different shapes.
@@ -135,7 +192,9 @@ Either way, both core axes of the human affective circumplex are recoverable in 
 
 Anthropic's emotion-vector methodology generalizes across model families. You don't need a frontier model to study emotion concepts — Qwen 7B on a Mac mini gives you 91.8% probe accuracy on 20-way emotion classification, which is more than enough to do steering, residue detection, or feature analysis.
 
-The 18× spread in valence-axis strength is a meaningful difference between architectures that hasn't been documented before (to our knowledge). It suggests training-data composition or RLHF mix matters substantially for how emotion gets encoded, even when downstream task accuracy is similar.
+~~The 18× spread in valence-axis strength is a meaningful difference between architectures that hasn't been documented before.~~ **Withdrawn 2026-08-17 — that spread was a units artifact.** See the correction at the top.
+
+The corrected result points the other way, and is the more useful one: emotion geometry appears close to **model-invariant**. Three labs, a 5× parameter range, and every geometric property in a narrow band. That means a finding established on one open-weight model has a reasonable prior of transferring to another — which is what makes the methodology worth using on cheap hardware. A 1.5B model lands within 2.4 points of an 8B on 20-way probe accuracy.
 
 ### For downstream applications
 

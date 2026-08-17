@@ -77,7 +77,9 @@ Sample `REPORT.md` excerpt:
 
 **Permutation tests:** p < 0.001 across all models, all layers. The cluster signal is real, not noise.
 
-**Headline finding:** all five models pass the basic geometry tests at 91-92% probe accuracy on 20-way emotion classification (chance 5%). But the *organization* of emotion is dramatically different — Qwen3-8B has 18× cleaner valence axis than Mistral, while Llama and Mistral have *tighter* within-cluster cohesion than the Qwen family. **Two valid geometric profiles, both encoding emotion richly, organized differently.** Full writeup: [`docs/CROSS_MODEL_FINDINGS.md`](docs/CROSS_MODEL_FINDINGS.md).
+**Headline finding:** emotion geometry is close to **model-invariant**. All five models pass the geometry tests at 89.7–92.1% probe accuracy on 20-way emotion classification (chance 5%), and every geometric property lands in a narrow band across three labs and a 5× parameter range — normalized valence separation 0.636–0.716, within-vs-cross cohesion 0.215–0.252, cross-layer stability 0.96–0.99. A 1.5B model lands within 2.4 points of an 8B. Full writeup: [`docs/CROSS_MODEL_FINDINGS.md`](docs/CROSS_MODEL_FINDINGS.md).
+
+> **Correction 2026-08-17.** An earlier version of this README claimed an "18× cleaner valence axis" for Qwen3-8B and concluded there were "two valid geometric profiles." **Both claims are withdrawn.** The 18× was a units artifact — PC1 separation was computed on unnormalized vectors and correlated with mean vector L2 norm at r = 0.9896. Normalized, the spread is 1.13×. Probe accuracies and all other results are unaffected. Details and the preserved original framing are in the correction block at the top of `docs/CROSS_MODEL_FINDINGS.md`.
 
 ---
 

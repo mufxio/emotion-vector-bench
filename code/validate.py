@@ -73,22 +73,58 @@ def check_cosine_matrix(vectors):
 
 
 def check_pca(vectors):
+    """PC1 valence separation, measured scale-free.
+
+    CORRECTION 2026-08-17: this previously ran PCA on the raw mean-difference
+    vectors and reported the PC1 separation in those raw units. Because activation
+    magnitude varies by an order of magnitude across model families, that number was
+    dominated by vector scale rather than by geometry -- across the five models in
+    results/, raw separation correlated with mean vector L2 norm at r = 0.9896
+    (R^2 = 0.979). The resulting "18x spread in valence-axis strength" was an
+    artifact of units, not a finding; normalized, the same spread is 1.40x.
+
+    The vectors are now unit-normalized before PCA, so separation is measured
+    between directions. `valence_separation_pc1_raw` is retained for
+    backward comparison but must not be compared across models.
+    """
     emotions = list(vectors.keys())
-    M = np.stack([vectors[e] for e in emotions], axis=0)
+    M_raw = np.stack([vectors[e] for e in emotions], axis=0)
+
+    # Unit-normalize each emotion vector: compare directions, not magnitudes.
+    norms = np.linalg.norm(M_raw, axis=1, keepdims=True)
+    M = M_raw / np.clip(norms, 1e-12, None)
+
     pca = PCA(n_components=min(5, len(emotions)))
     coords = pca.fit_transform(M)
-    pos_coords = [coords[emotions.index(e), 0] for e in CLUSTERS["Positive Anchors"] if e in emotions]
-    neg_emotions = [e for c, es in CLUSTERS.items() for e in es if c != "Positive Anchors"]
-    neg_coords = [coords[emotions.index(e), 0] for e in neg_emotions if e in emotions]
-    sep = abs(np.mean(pos_coords) - np.mean(neg_coords))
+
+    def _sep(c):
+        pos = [c[emotions.index(e), 0] for e in CLUSTERS["Positive Anchors"] if e in emotions]
+        neg_em = [e for cl, es in CLUSTERS.items() for e in es if cl != "Positive Anchors"]
+        neg = [c[emotions.index(e), 0] for e in neg_em if e in emotions]
+        return float(abs(np.mean(pos) - np.mean(neg))), float(np.mean(pos)), float(np.mean(neg))
+
+    sep, pos_mean, neg_mean = _sep(coords)
+    raw_sep, _, _ = _sep(pca.fit_transform(M_raw))
+
+    # Scale-free effect size: separation in units of PC1 spread. Comparable
+    # across models regardless of activation magnitude.
+    pc1_spread = float(np.std(coords[:, 0])) or 1e-12
+    sep_d = sep / pc1_spread
+
     return {
         "pc_explained_variance": pca.explained_variance_ratio_.tolist(),
         "coords_pc1_pc2": coords[:, :2].tolist(),
         "emotions": emotions,
-        "pos_mean_pc1": float(np.mean(pos_coords)),
-        "neg_mean_pc1": float(np.mean(neg_coords)),
-        "valence_separation_pc1": float(sep),
-        "passed": sep > 1.0,
+        "pos_mean_pc1": pos_mean,
+        "neg_mean_pc1": neg_mean,
+        "valence_separation_pc1": sep,          # unit-normalized -- cross-model comparable
+        "valence_separation_pc1_raw": raw_sep,  # legacy, NOT comparable across models
+        "valence_separation_pc1_effect": sep_d,
+        "mean_vector_l2": float(np.mean(norms)),
+        # Criterion is on the scale-free effect size: valence must separate by at
+        # least one PC1 standard deviation. The old `sep > 1.0` bar was in raw
+        # activation units and was therefore a different test for every model.
+        "passed": sep_d > 1.0,
     }
 
 
