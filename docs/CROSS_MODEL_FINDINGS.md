@@ -51,7 +51,7 @@ Full spread across three labs and a 5× parameter range: **2.4 points of probe a
 Permutation tests: p < 0.001 across every model, every layer.
 Cross-layer stability: 0.96-0.99 across all five.
 
-**Headline finding:** Qwen models compress emotion onto a strong valence axis. Llama and Mistral spread emotion across many cluster-defining directions without a single dominant valence axis. Both encode emotion richly enough to support 90%+ probe accuracy. They organize it differently.
+**Headline finding (corrected 2026-08-17):** emotion geometry is close to **model-invariant**. All five models encode emotion richly enough to support ~90%+ probe accuracy, with normalized valence separation in a 1.13× band and cohesion in a 1.18× band. *(This paragraph previously claimed the Qwen and Llama/Mistral families "organize it differently" — that framing rested on the withdrawn units artifact.)*
 
 ## What we tested
 
@@ -154,10 +154,10 @@ The withdrawn framing, preserved for the record:
 > negative; looser within-cluster cohesion (~0.215-0.233).
 >
 > **Profile B — Distributed clusters (Llama, Mistral):** weak PC1 valence separation
-> (1.57-2.71); tighter within-cluster cohesion (~0.247-0.252).
-- Like organizing a library by topic, with no top-level genre split
+> (1.57-2.71); tighter within-cluster cohesion (~0.247-0.252);
+> like organizing a library by topic, with no top-level genre split.
 
-Both produce 91-92% probe accuracy. Both pass cross-layer stability. Both recover the arousal axis somewhere in PC2 or PC3. The 20 emotions are distinguishable in both. They just live in different shapes.
+All five produce ~90%+ probe accuracy, pass cross-layer stability, and recover the arousal axis on PC2 or PC3. The 20 emotions are distinguishable in every model. Under the corrected metric they live in nearly the *same* shape.
 
 ### 5. Implicit-emotion test reveals practical implications
 
@@ -173,7 +173,7 @@ The implicit-emotion scenarios (10 scenarios that evoke specific emotions withou
 
 (Chance: 5% / 15% / 25%)
 
-Notable: **Llama matches the best Qwen model on this practical test**, despite having the flattest valence axis. The "distributed clusters" profile is enough to identify implicit emotions when the cluster cohesion is tight.
+Notable: **Llama matches the best Qwen model on this practical test.** *(The original text called this surprising "despite having the flattest valence axis" — under the corrected metric that premise inverts: Llama's normalized valence separation, 0.716, is the highest of the five. The surprise dissolves with the artifact.)*
 
 Qwen 1.5B is sharply worse, suggesting smaller models have insufficient resolution for situational inference even when their basic geometry passes (89.7% probe accuracy is high, but Top-3 implicit accuracy is only 20%).
 
@@ -198,13 +198,13 @@ The corrected result points the other way, and is the more useful one: emotion g
 
 ### For downstream applications
 
-Choosing a model for emotion-related interpretability work depends on what you need:
+Choosing a model for emotion-related interpretability work (revised 2026-08-17 — the original list recommended Qwen3-8B for valence work on the strength of the withdrawn 18× figure):
 
-- **Sentiment/valence detection (positive vs negative residue)** → Qwen3-8B. Cleanest valence axis means even crude probes pick up sign of emotion accurately.
-- **Fine-grained emotion identification (which of N emotions)** → Llama-3.1-8B. Tightest within-cluster cohesion + strongest probe accuracy.
-- **Long-form scenario inference (implicit emotion in stories)** → Llama-3.1-8B or Qwen2.5-7B (60% Top-3).
-- **All-around** → Qwen2.5-7B. Consistent in the top half across every metric.
-- **Smallest workable model** → Qwen2.5-1.5B passes basic tests but loses substantially on situational tasks. 7B class is the practical floor.
+- **Sentiment/valence detection** → any of the five. Normalized valence separation spans 0.636–0.716; the differences are within noise, and the previous Qwen3-8B recommendation is withdrawn.
+- **Fine-grained emotion identification (which of N emotions)** → Llama-3.1-8B, on a small edge: best-layer probe accuracy 92.1% and the tightest within-cluster cohesion (0.252). It is an edge, not a tier.
+- **Long-form scenario inference (implicit emotion in stories)** → Llama-3.1-8B or Qwen2.5-7B (60% Top-3, n=10 — see caveat 4).
+- **Smallest workable model** → Qwen2.5-1.5B passes the geometry tests but loses substantially on situational tasks. 7B class is the practical floor.
+- **The honest summary** → for this methodology, model choice barely matters. That is the finding.
 
 ### For methodology
 
